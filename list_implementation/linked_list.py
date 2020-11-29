@@ -1,6 +1,8 @@
 from list_implementation.my_list import MyList
+from list_implementation.singleton import singleton
 
 
+@singleton
 class MyNode:
     def __init__(self, value):
         self.value = value
@@ -85,6 +87,28 @@ class LinkedList(MyList):
 
         while current_node is not None:
             result.append(current_node.value)
+            current_node = current_node.next
+
+        return result
+
+    def even(self):
+        current_node = self.head
+        result = []
+
+        while current_node is not None:
+            if current_node.value % 2 == 0:
+                result.append(current_node.value)
+            current_node = current_node.next
+
+        return result
+
+    def odd(self):
+        current_node = self.head
+        result = []
+
+        while current_node is not None:
+            if current_node.value % 2 == 1:
+                result.append(current_node.value)
             current_node = current_node.next
 
         return result

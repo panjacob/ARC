@@ -1,6 +1,5 @@
 from abc import abstractmethod
 
-
 class MyList:
     @abstractmethod
     def push(self, value):
@@ -24,4 +23,12 @@ class MyList:
 
     @abstractmethod
     def items(self):
+        pass
+
+    @abstractmethod
+    def even(self):
+        pass
+
+    @abstractmethod
+    def odd(self):
         pass
