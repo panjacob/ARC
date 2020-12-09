@@ -2,15 +2,14 @@ from expression_parsing.notation import Notation
 
 notation = Notation()
 
-# in1 = '3+4*2/(1-5)^2'
-# pre1 = notation.in_to_pre(in1)
-# print(pre1)
-# in1_prim = notation.pre_to_in(pre1)
-# print(in1_prim, in1)
+infix = '(a + b) ∗ (c + d)'
+print('infix: ', infix)
+postfix = notation.infix_postfix(infix)
+print('postfix: ', postfix)
+prefix = notation.postfix_prefix(postfix)
+print('prefix: ', prefix)
+infix_prim = notation.postfix_infix(postfix)
+print('infix_prim: ', infix_prim)
 
-# notation.in_to_pre('12 + a * (b * c + d / e)')
-
-# post1 = notation.pre_to_post('* - A / B C - / A K L')
-# print(post1)
-# pre1 = notation.post_to_pre('ABC/-AK/L-*')
-# print(pre1)
+postfix_prim = notation.prefix_postfix(prefix)
+print('postfix_prim: ', postfix_prim)
