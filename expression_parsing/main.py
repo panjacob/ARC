@@ -10,5 +10,7 @@ notation = Notation()
 
 # notation.in_to_pre('12 + a * (b * c + d / e)')
 
-notation.pre_to_post('+ A B')
-
+# post1 = notation.pre_to_post('* - A / B C - / A K L')
+# print(post1)
+# pre1 = notation.post_to_pre('ABC/-AK/L-*')
+# print(pre1)

@@ -74,8 +74,12 @@ class Notation:
         return string.split(" ")
 
     def isOpperand(self, string):
-        opperands = ['*', '/', '+', '-', '^', '(', ')']
-        return string not in opperands
+        operators = ['*', '/', '+', '-', '^', '(', ')']
+        return string not in operators
+
+    def isOperator(self, string):
+        operators = ['*', '/', '+', '-', '^', '(', ')']
+        return string in operators
 
     def pre_to_in(self, equation):
         equation = self.str_to_arr_postfix(equation)
@@ -93,21 +97,34 @@ class Notation:
 
     def pre_to_post(self, equation):
         equation = self.str_to_arr_postfix(equation)
+        equation = reversed(equation)
         stack = []
-        i = len(equation) - 1
-        while (True):
-
-            c = equation[i]
-            print('stack: ', stack, '    equation: ', equation, '  c: ', c, '  i: ', i, 'len: ', len(equation))
-            if not self.isOpperand(c):
-                i -= 2
-                operator1 = equation.pop()
-                operator2 = equation.pop()
-                opperand = stack.pop()
-                print(operator1, operator2, opperand)
-                stack.append(operator1)
-                stack.append(operator2)
-                stack.append(opperand)
+        for c in equation:
+            print(stack)
+            if self.isOperator(c):
+                opperand1 = stack.pop()
+                opperand2 = stack.pop()
+                temp = opperand1 + opperand2 + c
+                stack.append(temp)
             else:
-                stack.append(equation.pop())
-                i -= 1
+                stack.append(c)
+        result = ' '.join(map(str, stack))
+        return result
+
+    def post_to_pre(self, equation):
+        s = []
+        length = len(equation)
+        for i in range(length):
+            if self.isOperator(equation[i]):
+                op1 = s[-1]
+                s.pop()
+                op2 = s[-1]
+                s.pop()
+                temp = equation[i] + op2 + op1
+                s.append(temp)
+            else:
+                s.append(equation[i])
+        ans = ""
+        for i in s:
+            ans += i
+        return ans
