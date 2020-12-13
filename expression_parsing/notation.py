@@ -32,7 +32,7 @@ class Notation:
                     output.append(popped)
                 stack.append(c)
                 last_priority = priority
-            # print('input: ', c, '   output: ', output, '   stack: ', stack)
+            print('input: ', c, '   output: ', output, '   stack: ', stack, 'lastp', last_priority, ' ')
         while (True):
             if len(stack) <= 0:
                 break
@@ -79,18 +79,18 @@ class Notation:
 
     def postfix_prefix(self, equation):
         equation = self.str_to_arr_postfix(equation)
-        s = []
+        output = []
         length = len(equation)
         for i in range(length):
             if self.is_operator(equation[i]):
-                op1 = s.pop()
-                op2 = s.pop()
+                op1 = output.pop()
+                op2 = output.pop()
                 temp = equation[i] + op2 + op1
-                s.append(temp)
+                output.append(temp)
             else:
-                s.append(equation[i])
+                output.append(equation[i])
         result = ""
-        for x in ''.join(map(str, s)):
+        for x in ''.join(map(str, output)):
             result += x + ' '
         return result
 

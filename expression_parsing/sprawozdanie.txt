@@ -1,0 +1,28 @@
+#Zamiana z postaci infix do postfix:
+
+priorytet:
+-1- liczby i zmienne
+0- ( )
+1- + -
+2- * /
+3- ^
+
+#Odcztywywane jest w pętli wyrażenie:
+Jeśli priorytet ==:
+-1 - dodawane jest do output
+0 - i jest to '(' to jest dopisywany na stos,
+0 - i jest to ')' to odczytywane są wszystkie operatory aż do '('. Nawias nie jest dodawany do output.
+Jeśli priorytet jest wyższy od ostatniego elementu na stosie to jest dodawany do stosu
+Jeśli priorytet jest mniejszy to zdejmowany jest ze stosu ostatni element i i dodawany do output. Potem dodawany jest aktualny element do stosu
+Po odczytaniu całego wyrażenia reszta ze stosu dodawana jest do output
+
+Zamiana z postaci postfix do infix:
+
+#Odczytywane jest w pętli wyrażenie:
+Jeśli jest to cyfra lub zmienna to dodwana jest na output.
+Jeśli jest to operator to zdejmowane są z output 2 ostatnie cyfry a następnie spowrotem dodawane w postaci ( zmienna operator zmienna )
+
+#Zamiana z postaci prefix do postfix:
+Odczytywane jest w pętli wyrażenie:
+Jeśli jest to cyfra to jest dodawana do output
+Jeśli jest to operator to zdejmowane są dwie cyfry a następnie dodawany jest operator i spowrotem dwie cyfry
